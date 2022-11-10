@@ -2,6 +2,7 @@ import { ordered as orderedLocales } from '@tablecheck/locales';
 import { useTranslation } from 'react-i18next';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { Restaurants } from 'Pages/Restaurants';
 import { About } from 'Pages/About';
 import { Home } from 'Pages/Home';
 import { ReportIssue } from 'Pages/ReportIssue';
@@ -34,6 +35,7 @@ export function Router({
         <Route index element={<Home />} />
         <Route path={AppRoute.About} element={<About />} />
         <Route path={AppRoute.ReportIssue} element={<ReportIssue />} />
+        <Route path={AppRoute.Restaurants} element={<Restaurants />} />
       </Route>
       <Route path="*" element={<Navigate to={`/${language}`} replace />} />
     </Routes>
