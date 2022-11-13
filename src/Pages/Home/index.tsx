@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate, Navigate, Link } from 'react-router-dom';
 import { useState } from 'react'
 import axios from 'axios';
 
-import { Form } from './Form';
+// import { Form } from './Form';
 import { HomeHeadline, HomeWrapper } from './styles';
 
 const defaultCoords = {
@@ -14,6 +14,11 @@ const defaultCoords = {
 
 export function Home(): JSX.Element {
   const [t, { language }] = useTranslation();
+  const navigate = useNavigate();
+
+  const navigateToRestaurants = () => {
+    navigate(`/restaurants/${location}`);
+  };
 
   const [ location, setLocation ] = useState("");
   const [ coords, setCoords ] = useState(defaultCoords);
@@ -24,6 +29,7 @@ export function Home(): JSX.Element {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try { 
       const res = await axios.get(urlCoords);
       const newCoords = { 
@@ -34,7 +40,7 @@ export function Home(): JSX.Element {
 
       const resShops = await axios.get(urlShops);
       setRestaurants(resShops.data.shops);
-
+      navigateToRestaurants();
     } catch (err) {
       console.log('👹 ERROR:' + err)
     };
@@ -57,7 +63,7 @@ export function Home(): JSX.Element {
       <form onSubmit={onSubmit}>
         <input type="text" id="search" name="location" value={location} onChange={onChange} />
         <br />
-        <button type="submit">Search</button>
+          <button type="submit" >Search</button>
       </form>
 
 

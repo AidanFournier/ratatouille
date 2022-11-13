@@ -35,8 +35,8 @@ export function Router({
         <Route index element={<Home />} />
         <Route path={AppRoute.About} element={<About />} />
         <Route path={AppRoute.ReportIssue} element={<ReportIssue />} />
-        <Route path={AppRoute.Restaurants} element={<Restaurants />} />
       </Route>
+      <Route path={AppRoute.Restaurants} element={<Restaurants />} />
       <Route path="*" element={<Navigate to={`/${language}`} replace />} />
     </Routes>
   );
