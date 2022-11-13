@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import axios from 'axios';
 
 import { Form } from './Form';
@@ -15,7 +15,7 @@ const defaultCoords = {
 export function Home(): JSX.Element {
   const [t, { language }] = useTranslation();
 
-  var location;
+  const [ location, setLocation ] = useState("");
   const [ coords, setCoords ] = useState(defaultCoords);
   const [ restaurants, setRestaurants ] = useState({});
 
@@ -40,13 +40,12 @@ export function Home(): JSX.Element {
     };
   };
 
-  console.log(coords);
   console.log(restaurants);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setLocation((e.target.value));
-    return location = e.target.value;
+    setLocation((e.target.value));
   };
+
 
   return (
     <HomeWrapper>
