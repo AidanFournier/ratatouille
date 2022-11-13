@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useNavigate, Navigate } from 'react-router-dom';
+import { Outlet, useNavigate, Navigate, Link } from 'react-router-dom';
 import { useState } from 'react'
 import axios from 'axios';
 
@@ -17,9 +17,7 @@ export function Home(): JSX.Element {
   const navigate = useNavigate();
 
   const navigateToRestaurants = () => {
-    // 👇️ navigate to /restaurants
-    // navigate(`/:${location}`);
-    navigate('/restaurants');
+    navigate(`/restaurants/${location}`);
   };
 
   const [ location, setLocation ] = useState("");
@@ -30,7 +28,8 @@ export function Home(): JSX.Element {
   const urlShops = `https://staging-snap.tablecheck.com/v2/shop_search?cuisines[]=kaiseki&geo_latitude=${coords.lat}&geo_longitude=${coords.long}&shop_universe_id=57e0b91744aea12988000001&locale=en&per_page=50`
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
+    e.preventDefault();
+
     try { 
       const res = await axios.get(urlCoords);
       const newCoords = { 
@@ -41,7 +40,7 @@ export function Home(): JSX.Element {
 
       const resShops = await axios.get(urlShops);
       setRestaurants(resShops.data.shops);
-
+      navigateToRestaurants();
     } catch (err) {
       console.log('👹 ERROR:' + err)
     };
@@ -64,7 +63,7 @@ export function Home(): JSX.Element {
       <form onSubmit={onSubmit}>
         <input type="text" id="search" name="location" value={location} onChange={onChange} />
         <br />
-        <button type="submit" onClick={navigateToRestaurants}>Search</button>
+          <button type="submit" >Search</button>
       </form>
 
 
