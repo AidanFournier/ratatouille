@@ -65,6 +65,7 @@ export function Home(): JSX.Element {
         <br />
           <button type="submit" >Search</button>
       </form>
+      <Link to='/restaurants/:location'></Link>
 
 
       <Outlet />
