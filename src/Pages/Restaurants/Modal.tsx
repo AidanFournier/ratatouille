@@ -3,6 +3,7 @@ import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContaine
 import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
 
 type ModalProps = {
+    handleClick: () => void,
     name: string,
     address: string[],
     alt_address: string[],
@@ -15,13 +16,11 @@ type ModalProps = {
     url: string
 }
 
-export function Modal ({name, address, alt_address, banner_image, body, title, phone, phone_natl, stations, url}: ModalProps) {
+export function Modal ({handleClick, name, address, alt_address, banner_image, body, title, phone, phone_natl, stations, url}: ModalProps) {
     return (
         <ModalDialog
             data-testid="Modal Test Id"
-            // footerContent="Simple footer (maybe custom JSX component)"
             hasCloseIcon
-            headerContent="Simple header (maybe custom JSX component)"
             maxWidth={{
                 default: 200,
                 'min-width: 600px': 400,
@@ -31,17 +30,12 @@ export function Modal ({name, address, alt_address, banner_image, body, title, p
             onEscapeKeyDown={function noRefCheck(){}}
             onOpenAutoFocus={function noRefCheck(){}}
             onPointerDownOutside={function noRefCheck(){}}
-            trigger={<CardButton onClick={function noRefCheck(){}}>
+            trigger={<CardButton onClick={handleClick}>
             More
             </CardButton>}
             >
-            <Fragment key=".$Quasi nesciunt id aut. Ipsam ratione ratione qui et assumenda. Id molestiae ut molestiae. Dolore in aut delectus accusantium perferendis officia.">
-                <h3>
-                Architecto nisi quia assumenda consequuntur maiores laborum animi doloribus.
-                </h3>
-                <p>
-                Quasi nesciunt id aut. Ipsam ratione ratione qui et assumenda. Id molestiae ut molestiae. Dolore in aut delectus accusantium perferendis officia.
-                </p>
+            <Fragment>
+               <h1>{name}</h1>
             </Fragment>
             </ModalDialog>
     )

@@ -7,10 +7,24 @@ import axios from 'axios';
 
 // import { HomeHeadline, HomeWrapper } from './styles';
 import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardButton, CardTag  } from './styles';
+import { Modal } from './Modal';
 import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
-import { TopNav } from 'Layouts/TopNav'
-import { Footer } from 'Layouts/Footer'
+import { TopNav } from 'Layouts/TopNav';
+import { Footer } from 'Layouts/Footer';
 import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
+
+const defaultRestaurantDetails = {
+  name: "",
+  address: [],
+  alt_address: [],
+  banner_image: "",
+  body: "",
+  title: "",
+  phone: "",
+  phone_natl: "",
+  stations: [],
+  url: ""
+}
 
 
 export function Restaurants({
@@ -22,7 +36,7 @@ export function Restaurants({
 }): JSX.Element {
   const [t, { language }] = useTranslation();
   const [ searchRestaurant, setSearchRestaurant ] = useState("");
-  const [ restaurantDetails, setRestaurantDetails ] = useState({});
+  const [ restaurantDetails, setRestaurantDetails ] = useState(defaultRestaurantDetails);
 
   const urlShopSearch = `https://staging-snap.tablecheck.com/v2/shops/${searchRestaurant}`;
 
@@ -90,35 +104,20 @@ export function Restaurants({
                           return <CardTag size="small" color="#7935D2">{cuisine}</CardTag>
                         })}
                       </TagsContainer>
-                      <ModalDialog
-                        data-testid="Modal Test Id"
-                        // footerContent="Simple footer (maybe custom JSX component)"
-                        hasCloseIcon
-                        // headerContent="Simple header (maybe custom JSX component)"
-                        maxWidth={{
-                          default: 200,
-                          'min-width: 600px': 400,
-                          'min-width: 800px': 700
-                        }}
-                        onCloseAutoFocus={function noRefCheck(){}}
-                        onEscapeKeyDown={function noRefCheck(){}}
-                        onOpenAutoFocus={function noRefCheck(){}}
-                        onPointerDownOutside={function noRefCheck(){}}
-                        trigger={<CardButton 
-                          onClick={(e) => setSearchRestaurant(restaurant.slug)}
-                          >
-                        More
-                        </CardButton>}
-                      >
-                        <Fragment >
-                          <h3>
-                            {restaurant.name}
-                          </h3>
-                          <p>
-                            Quasi nesciunt id aut. Ipsam ratione ratione qui et assumenda. Id molestiae ut molestiae. Dolore in aut delectus accusantium perferendis officia.
-                          </p>
-                        </Fragment>
-                      </ModalDialog>
+               
+                      <Modal 
+                        handleClick={() => setSearchRestaurant(restaurant.slug)}
+                        name = {restaurantDetails.name}
+                        address = {restaurantDetails.address}
+                        alt_address = {restaurantDetails.alt_address}
+                        banner_image = {restaurantDetails.banner_image}
+                        body = {restaurantDetails.body}
+                        title = {restaurantDetails.title}
+                        phone = {restaurantDetails.phone}
+                        phone_natl = {restaurantDetails.phone_natl}
+                        stations = {restaurantDetails.stations}
+                        url = {restaurantDetails.url}
+                      />
                     </CardContainer>
                   </Card>)
               })}
