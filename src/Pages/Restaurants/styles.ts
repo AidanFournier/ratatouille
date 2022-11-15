@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Headline, PageWrapper } from 'Layouts';
+import { Headline, PageWrapper, BREAKPOINTS } from 'Layouts';
 import { pageTransitionEasing, slideUp } from 'styles';
 import { Button } from '@tablecheck/tablekit-button';
 import { Tag } from '@tablecheck/tablekit-tag';
@@ -37,6 +37,10 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 400ms ease;
+    &:hover {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+    }
 `
 
 export const CardContainer = styled.div`
@@ -55,6 +59,15 @@ export const CardTitle = styled.h2`
 
 export const ResultsContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-template-columns: repeat(1fr);
     gap: 2.5rem;
+
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: ${BREAKPOINTS.desktop}) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 `
