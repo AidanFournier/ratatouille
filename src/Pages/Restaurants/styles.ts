@@ -11,3 +11,7 @@ export const HomeWrapper = styled(PageWrapper)`
 export const HomeHeadline = styled(Headline)`
   text-align: center;
 `;
+
+export const Card = styled.div`
+    padding: 32px;
+`

@@ -12,12 +12,6 @@ const defaultCoords = {
   long: ""
 };
 
-// const defaultRestaurant = {
-//   id: "",
-//   name: "",
-
-// }
-
 export function Home(): JSX.Element {
   const [t, { language }] = useTranslation();
   const navigate = useNavigate();

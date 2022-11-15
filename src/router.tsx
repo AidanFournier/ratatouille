@@ -36,7 +36,7 @@ export function Router({
         <Route path={AppRoute.About} element={<About />} />
         <Route path={AppRoute.ReportIssue} element={<ReportIssue />} />
       </Route>
-      <Route path={AppRoute.Restaurants} element={<Restaurants />} />
+      <Route path={AppRoute.Restaurants} element={<Restaurants isDarkMode={isDarkMode} setDarkMode={setDarkMode}/>} />
       <Route path="*" element={<Navigate to={`/${language}`} replace />} />
     </Routes>
   );
