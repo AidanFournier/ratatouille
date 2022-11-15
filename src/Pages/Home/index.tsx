@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate, Navigate, Link } from 'react-router-dom';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 
 // import { Form } from './Form';
@@ -17,7 +17,7 @@ export function Home(): JSX.Element {
   const navigate = useNavigate();
 
   const navigateToRestaurants = () => {
-    navigate(`/restaurants/${location}`);
+    navigate(`/restaurants/${location}`, {state: {restaurants} });
   };
 
   const [ location, setLocation ] = useState("");
@@ -37,16 +37,17 @@ export function Home(): JSX.Element {
         long: res.data.locations[0].payload.geo.lon.toString()
       };
       setCoords(newCoords)
-
       const resShops = await axios.get(urlShops);
       setRestaurants(resShops.data.shops);
-      navigateToRestaurants();
+      
     } catch (err) {
       console.log('👹 ERROR:' + err)
     };
   };
 
-  console.log(restaurants);
+  useEffect(() => {
+    navigateToRestaurants();
+  }, [restaurants])
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocation((e.target.value));
