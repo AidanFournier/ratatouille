@@ -37,6 +37,10 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 400ms ease;
+    &:hover {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+    }
 `
 
 export const CardContainer = styled.div`

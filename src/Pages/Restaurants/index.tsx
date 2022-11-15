@@ -18,7 +18,6 @@ export function Restaurants({
   setDarkMode: (value: boolean) => void;
 }): JSX.Element {
   const [t, { language }] = useTranslation();
-  const [ restaurants, setRestaurants ] = useState({})
 
   const location = useLocation().state as {
       restaurants: [],
@@ -38,8 +37,6 @@ export function Restaurants({
       <TopNav isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
       <PageWrapper>
         <PageContent>
-
-
 
           <div className="controls__panel"></div>
           <div>
@@ -66,8 +63,6 @@ export function Restaurants({
           </div>
         </PageContent>
  
-
-
         <Helmet>
           <title lang={language}>{`${t('attributes.titles.headline')} - ${t(
             'keywords.app_name'
