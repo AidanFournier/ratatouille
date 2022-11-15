@@ -19,7 +19,7 @@ const defaultRestaurantDetails = {
   alt_address: [],
   banner_image: "",
   body: "",
-  title: "",
+  // title: {locale: "", en: "" },
   phone: "",
   phone_natl: "",
   stations: [],
@@ -67,7 +67,8 @@ export function Restaurants({
           phone: res.data.shops[0].phone,
           phone_natl: res.data.shops[0].phone_natl,
           stations: res.data.shops[0].stations,
-          url: res.data.shops[0].url
+          url: res.data.shops[0].url,
+          id: res.data.shops[0]._id
         };
         setRestaurantDetails(newRestaurantDetails);
       } catch (err) {
@@ -78,6 +79,7 @@ export function Restaurants({
 
   useEffect(() => {
     fetchRestaurant();
+    setRestaurantDetails(defaultRestaurantDetails);
   }, [searchRestaurant]);
 
   console.log(location);
@@ -95,7 +97,7 @@ export function Restaurants({
             <ResultsContainer>
               {location.restaurants.map((restaurant: any) => {
                 return (
-                  <Card>
+                  <Card key={restaurant.id}>
                     <CardImg src={restaurant.search_image ? restaurant.search_image : ""} alt="Restaurant cover" />
                     <CardContainer>
                       <CardTitle>{restaurant.name[1]}</CardTitle>
@@ -112,18 +114,15 @@ export function Restaurants({
                         alt_address = {restaurantDetails.alt_address}
                         banner_image = {restaurantDetails.banner_image}
                         body = {restaurantDetails.body}
-                        title = {restaurantDetails.title}
+                        // title = {restaurantDetails.title}
                         phone = {restaurantDetails.phone}
                         phone_natl = {restaurantDetails.phone_natl}
                         stations = {restaurantDetails.stations}
                         url = {restaurantDetails.url}
                       />
                     </CardContainer>
-                  </Card>)
-              })}
-
-              
-
+                  </Card>);
+              })};
             </ResultsContainer>
           </div>
         </PageContent>
