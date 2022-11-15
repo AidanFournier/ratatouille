@@ -200,11 +200,11 @@
   "client": {
     "js": [
       "http://localhost:3000/static/js/client.js",
-      "http://localhost:3000/client.2bb628dce3dbfcc7ab38.hot-update.js"
+      "http://localhost:3000/client.588f74b3af63ae9d4265.hot-update.js"
     ],
     "map": [
       "http://localhost:3000/static/js/client.js.map",
-      "http://localhost:3000/client.2bb628dce3dbfcc7ab38.hot-update.js.map"
+      "http://localhost:3000/client.588f74b3af63ae9d4265.hot-update.js.map"
     ],
     "chunks": [
       "client"

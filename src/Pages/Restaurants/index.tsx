@@ -5,20 +5,12 @@ import { useLocation } from 'react-router-dom';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
 import { HomeHeadline, HomeWrapper } from './styles';
-import { Card } from './styles';
+import { Card, CardImg, CardContainer, TagsContainer } from './styles';
 import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
 import { TopNav } from 'Layouts/TopNav'
 import { Footer } from 'Layouts/Footer'
 import { Button } from '@tablecheck/tablekit-button';
-
-// type Restaurant = {
-//   id: string,
-//   img: string,
-//   name: string,
-//   tags: string[],
-//   cuisines: string[],
-//   distance: number
-// }
+import { Tag } from '@tablecheck/tablekit-tag';
 
 export function Restaurants({
   isDarkMode,
@@ -37,10 +29,9 @@ export function Restaurants({
       name: string,
       tags: string[],
       cuisines: string[],
-      distance: number
+      distance: number,
+      content_body_translations: string
   };
- 
-  // setRestaurants(prev)
 
   console.log(location);
 
@@ -59,18 +50,18 @@ export function Restaurants({
               {location.restaurants.map((restaurant: any) => {
                 return (
                   <Card>
-                    <img src={restaurant.search_image} alt="Restaurant cover" />
-                    <div className="card__info">
-                      {restaurant.name}
-                      <div className="card__tags">
+                    <CardImg src={restaurant.search_image} alt="Restaurant cover" />
+                    <CardContainer>
+                      <h2>{restaurant.name[1]}</h2>
+                      <TagsContainer>
                         {restaurant.cuisines.map((cuisine: string) => {
-                          return <p>{cuisine}</p>
+                          return <Tag color="#7935D2">{cuisine}</Tag>
                         })}
-                      </div>
+                      </TagsContainer>
                         <Button onClick={function noRefCheck(){}}>
                           More
                         </Button>
-                    </div>
+                    </CardContainer>
                   </Card>)
               })}
             </div>
