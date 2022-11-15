@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 
 // import { Form } from './Form';
-import { HomeHeadline, HomeWrapper } from './styles';
+import { HomeHeadline, HomeWrapper, HomeInput, HomeSearchButton, HomeDescription, HomeForm, HomeImage } from './styles';
+// import RatHome from '..../public/static/img/rat-home.png'
 
 const defaultCoords = {
   lat: "",
@@ -56,17 +57,15 @@ export function Home(): JSX.Element {
 
   return (
     <HomeWrapper>
-      {/* <HomeHeadline>{t('attributes.titles.headline')}</HomeHeadline> */}
-      {/* Hello world ^ */}
+      <HomeHeadline>Welcome to Ratatouille</HomeHeadline>
+      <HomeDescription>We're the small, clever rat - we mean app - that will help you find a restaurant in a pinch. </HomeDescription>
+      <HomeDescription>Go from crumbs to a meal before you can say 'ratatouille'!</HomeDescription>
 
-      <h1>Search for a restaurant by location!</h1>
-
-      <form onSubmit={onSubmit}>
-        <input type="text" id="search" name="location" value={location} onChange={onChange} />
-        <br />
-          <button type="submit" >Search</button>
-      </form>
-      <Link to='/restaurants/:location'></Link>
+      <HomeForm onSubmit={onSubmit}>
+        <HomeInput type="search" id="search" name="location" value={location} onChange={onChange} />
+        <HomeSearchButton type="submit" >Search</HomeSearchButton>
+      </HomeForm>
+      {/* <HomeImage src={RatHome} alt="Rat with chef's hat" /> */}
 
 
       <Outlet />
