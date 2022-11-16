@@ -16,9 +16,9 @@ import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
 const defaultRestaurantDetails = {
   name: "",
   address: [],
-  alt_address: [],
+  alt_address: {},
   banner_image: "",
-  body: "",
+  body: {},
   // title: {locale: "", en: "" },
   phone: "",
   phone_natl: "",

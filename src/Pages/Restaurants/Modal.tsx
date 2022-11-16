@@ -1,41 +1,28 @@
-import { Fragment } from 'react';
-import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardButton, CardTag  } from './styles';
+import { CardImg, CardTitle, CardButton, FlexSection, RestaurantModalContainer } from './styles';
 import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
+import { Link as TKLink } from '@tablecheck/tablekit-typography';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library, IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
-// import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-// library.add(faGoogle as IconDefinition);
-// library.add(faUpRightFromSquare as IconDefinition);
+import { faMapPin, faLink } from "@fortawesome/free-solid-svg-icons"
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-// import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 type ModalProps = {
     handleClick: () => void,
     name: string,
-    address: string[],
-    alt_address: string[],
+    alt_address: {[key: string]: any},
     banner_image: string,
-    body: string,
-    // title: {[key: string]: any},
-    phone: string,
-    phone_natl: string,
-    stations: {[key: string]: any},
+    body: {[key: string]: any},
     url: string
 }
 
-export function Modal ({handleClick, name, address, alt_address, banner_image, body, phone, phone_natl, stations, url}: ModalProps) {
+export function Modal ({handleClick, name, alt_address, banner_image, body, url}: ModalProps) {
     return (
         <ModalDialog
             data-testid="Modal Test Id"
             hasCloseIcon
-            maxWidth={{
-                default: 200,
-                'min-width: 600px': 400,
-                'min-width: 800px': 700
-            }}
+            width=
+                "regular"
             onCloseAutoFocus={function noRefCheck(){}}
             onEscapeKeyDown={function noRefCheck(){}}
             onOpenAutoFocus={function noRefCheck(){}}
@@ -43,20 +30,29 @@ export function Modal ({handleClick, name, address, alt_address, banner_image, b
             trigger={<CardButton onClick={handleClick}>
             More
             </CardButton>}
-            >
-            <Fragment>
-                <img src={banner_image} alt="Restaurant banner"/>
-                    
-                <div className="title">
+        >
+            <RestaurantModalContainer>
+                <CardImg src={banner_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : banner_image} alt="Restaurant banner"/>
+                <CardTitle>
                     <span>{name[0] + " "}</span>
                     {name[1]? <span>{`(${name[1]})`}</span> : ""}
-                    <FontAwesomeIcon icon={faArrowRight as IconProp} />
-                </div>
-
-
-
-
-            </Fragment>
-            </ModalDialog>
+                </CardTitle>
+                <h4>
+                    {body[1]? <span>{`${body[1].translation}`}</span> : ""}
+                </h4>
+                <FlexSection>
+                    <p><FontAwesomeIcon icon={faLink as IconProp} /></p>
+                    <TKLink href={url}><p>{url}</p></TKLink>
+                </FlexSection>
+                <FlexSection>
+                    <p><FontAwesomeIcon icon={faMapPin as IconProp} /></p>
+                    <p>{alt_address.street2}</p>
+                    <p>{alt_address.street}</p>
+                    <p>{alt_address.city}</p>
+                    <p>{alt_address.region}</p>
+                    <p>〒 {alt_address.postal_code}</p>  
+                </FlexSection>
+            </RestaurantModalContainer>
+        </ModalDialog>
     )
 }
