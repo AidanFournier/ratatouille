@@ -13,6 +13,8 @@ type ModalProps = {
     alt_address: {[key: string]: any},
     banner_image: string,
     body: {[key: string]: any},
+    phone: string,
+    phone_natl: string,
     url: string
 }
 
