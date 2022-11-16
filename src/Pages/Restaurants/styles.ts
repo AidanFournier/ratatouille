@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
-import { Headline, PageWrapper, BREAKPOINTS } from 'Layouts';
+import { Headline, PageWrapper, BREAKPOINTS, PageLink } from 'Layouts';
 import { pageTransitionEasing, slideUp } from 'styles';
 import { Button } from '@tablecheck/tablekit-button';
 import { Tag } from '@tablecheck/tablekit-tag';
+
 
 export const HomeWrapper = styled(PageWrapper)`
   max-width: initial;
@@ -28,6 +29,7 @@ export const CardImg = styled.img`
     width: 100%;
     object-fit: cover;
     border-radius: 25px 25px 0 0;
+    margin-bottom: 10px;
 `
 
 export const Card = styled.div`
@@ -44,7 +46,7 @@ export const Card = styled.div`
 `
 
 export const CardContainer = styled.div`
-    padding: 25px 25px;
+    padding: 0 25px 25px 25px;
 `
 
 export const TagsContainer = styled.div`
@@ -69,5 +71,31 @@ export const ResultsContainer = styled.div`
 
     @media (min-width: ${BREAKPOINTS.desktop}) {
         grid-template-columns: repeat(3, 1fr);
+    }
+`
+
+export const RestaurantModalContainer = styled.div`
+    margin: 10px 0;
+    h4 {
+        padding-bottom: 15px;
+        margin: 10px 0;
+        border-bottom: 1px solid;
+    }
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+        margin: 10px;
+    }
+`
+
+export const FlexSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        padding-right: 5px;
+        font-size: 14px;
+        margin: 0;
+    }
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+        flex-direction: row;
     }
 `

@@ -63,7 +63,7 @@ export function Home(): JSX.Element {
 
       <HomeForm onSubmit={onSubmit}>
         <HomeInput type="search" id="search" name="location" value={location} onChange={onChange} />
-        <HomeSearchButton type="submit" >Search</HomeSearchButton>
+        <HomeSearchButton type="submit">Search</HomeSearchButton>
       </HomeForm>
       {/* <HomeImage src={RatHome} alt="Rat with chef's hat" /> */}
 
