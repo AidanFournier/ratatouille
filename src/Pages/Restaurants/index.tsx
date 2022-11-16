@@ -86,7 +86,8 @@ export function Restaurants({
 
           <div className="controls__panel"></div>
           <div>
-            <div className="search-bar">Search Results</div>
+            <h3 className="search-bar">Search results</h3>
+            <h1 className="search-bar">{shops.restaurants.length} places match your search</h1>
             <ResultsContainer>
               {shops.restaurants.map((restaurant: any) => {
                 return (
@@ -126,4 +127,4 @@ export function Restaurants({
       <Footer />
     </>
   )
-}
+};

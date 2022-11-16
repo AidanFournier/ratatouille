@@ -3,8 +3,8 @@ import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
 import { Link as TKLink } from '@tablecheck/tablekit-typography';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapPin, faLink } from "@fortawesome/free-solid-svg-icons"
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faMapPin, faLink } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 
 type ModalProps = {
@@ -57,4 +57,4 @@ export function Modal ({handleClick, name, alt_address, banner_image, body, url}
             </RestaurantModalContainer>
         </ModalDialog>
     )
-}
+};
