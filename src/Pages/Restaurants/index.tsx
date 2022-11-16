@@ -5,27 +5,21 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
-// import { HomeHeadline, HomeWrapper } from './styles';
 import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardButton, CardTag  } from './styles';
 import { Modal } from './Modal';
 import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
-import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
 
 const defaultRestaurantDetails = {
   name: "",
-  address: [],
   alt_address: {},
   banner_image: "",
   body: {},
-  // title: {locale: "", en: "" },
   phone: "",
   phone_natl: "",
-  stations: [],
   url: ""
 }
-
 
 export function Restaurants({
   isDarkMode,
@@ -40,7 +34,7 @@ export function Restaurants({
 
   const urlShopSearch = `https://staging-snap.tablecheck.com/v2/shops/${searchRestaurant}`;
 
-  const location = useLocation().state as {
+  const shops = useLocation().state as {
       restaurants: [],
       id: string,
       img: string,
@@ -56,7 +50,6 @@ export function Restaurants({
     if (searchRestaurant !== "") {
       try { 
         const res = await axios.get(urlShopSearch);
-        console.log(res);
         const newRestaurantDetails = {
           name: res.data.shops[0].name,
           address: res.data.shops[0].address,
@@ -93,12 +86,13 @@ export function Restaurants({
 
           <div className="controls__panel"></div>
           <div>
-            <div className="search-bar">Search Results</div>
+            <h3 className="search-bar">Search results</h3>
+            <h1 className="search-bar">{shops.restaurants.length} places match your search</h1>
             <ResultsContainer>
-              {location.restaurants.map((restaurant: any) => {
+              {shops.restaurants.map((restaurant: any) => {
                 return (
                   <Card key={restaurant.id}>
-                    <CardImg src={restaurant.search_image ? restaurant.search_image : ""} alt="Restaurant cover" />
+                    <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
                     <CardContainer>
                       <CardTitle>{restaurant.name[1]}</CardTitle>
                       <TagsContainer>
@@ -110,14 +104,11 @@ export function Restaurants({
                       <Modal 
                         handleClick={() => setSearchRestaurant(restaurant.slug)}
                         name = {restaurantDetails.name}
-                        address = {restaurantDetails.address}
                         alt_address = {restaurantDetails.alt_address}
                         banner_image = {restaurantDetails.banner_image}
                         body = {restaurantDetails.body}
-                        // title = {restaurantDetails.title}
                         phone = {restaurantDetails.phone}
                         phone_natl = {restaurantDetails.phone_natl}
-                        stations = {restaurantDetails.stations}
                         url = {restaurantDetails.url}
                       />
                     </CardContainer>
@@ -136,4 +127,4 @@ export function Restaurants({
       <Footer />
     </>
   )
-}
+};
