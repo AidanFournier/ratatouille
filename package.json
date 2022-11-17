@@ -41,6 +41,7 @@
     "@tablecheck/tablekit-free-icon-config": "2.1.1",
     "@tablecheck/tablekit-icon": "2.1.1",
     "@tablecheck/tablekit-input": "2.1.3",
+    "@tablecheck/tablekit-input-button": "^2.1.3",
     "@tablecheck/tablekit-item": "2.1.1",
     "@tablecheck/tablekit-language-selector": "2.1.1",
     "@tablecheck/tablekit-logo": "2.1.1",

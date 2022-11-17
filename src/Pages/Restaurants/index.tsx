@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
+import {  FilterBar } from '../components/FilterBar';
 import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardButton, CardTag  } from './styles';
 import { Modal } from './Modal';
 import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
@@ -31,6 +32,7 @@ export function Restaurants({
   const [t, { language }] = useTranslation();
   const [ searchRestaurant, setSearchRestaurant ] = useState("");
   const [ restaurantDetails, setRestaurantDetails ] = useState(defaultRestaurantDetails);
+  
 
   const urlShopSearch = `https://staging-snap.tablecheck.com/v2/shops/${searchRestaurant}`;
 
@@ -45,6 +47,8 @@ export function Restaurants({
       slug: string,
       content_body_translations: string
   };
+
+  const [ cuisineTags, setCuisineTags ] = useState((new  Set(shops.cuisines)));
 
   const fetchRestaurant = async () => {
     if (searchRestaurant !== "") {
@@ -78,14 +82,22 @@ export function Restaurants({
   console.log(location);
   console.log(restaurantDetails);
 
+  // const generateCuisineFilters = () => {
+  //   setCuisineTags(Array.from(new  Set(shops.cuisines)))
+  // }
+
   return (
     <>
       <TopNav isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
       <PageWrapper>
         <PageContent>
-
+          
           <div className="controls__panel"></div>
+            <FilterBar cuisines={cuisineTags} />
           <div>
+
+
+
             <h3 className="search-bar">Search results</h3>
             <h1 className="search-bar">{shops.restaurants.length} places match your search</h1>
             <ResultsContainer>
