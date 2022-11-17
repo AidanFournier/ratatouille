@@ -11,6 +11,7 @@ import { Modal } from './Modal';
 import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
+import { use } from 'i18next';
 
 const defaultRestaurantDetails = {
   name: "",
@@ -37,7 +38,7 @@ export function Restaurants({
   const urlShopSearch = `https://staging-snap.tablecheck.com/v2/shops/${searchRestaurant}`;
 
   const shops = useLocation().state as {
-      restaurants: [],
+      restaurants: {[key: string]: any},
       id: string,
       img: string,
       name: string,
@@ -48,7 +49,19 @@ export function Restaurants({
       content_body_translations: string
   };
 
-  const [ cuisineTags, setCuisineTags ] = useState((new  Set(shops.cuisines)));
+  // console.log(shops);
+
+  const [ cuisineTags, setCuisineTags ] = useState({});
+
+  useEffect(() => {
+    const allCuisines = shops.restaurants.map((restaurant: {[key: string]: any}) => {
+      return restaurant.cuisines;
+      
+    });
+    // console.log(allCuisines);
+    setCuisineTags((new  Set(allCuisines.flat())))
+    console.log(cuisineTags);
+  }, [])
 
   const fetchRestaurant = async () => {
     if (searchRestaurant !== "") {
@@ -79,12 +92,8 @@ export function Restaurants({
     setRestaurantDetails(defaultRestaurantDetails);
   }, [searchRestaurant]);
 
-  console.log(location);
-  console.log(restaurantDetails);
-
-  // const generateCuisineFilters = () => {
-  //   setCuisineTags(Array.from(new  Set(shops.cuisines)))
-  // }
+  // console.log(location);
+  // console.log(restaurantDetails);
 
   return (
     <>
