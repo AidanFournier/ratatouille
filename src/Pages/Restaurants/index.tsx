@@ -51,16 +51,17 @@ export function Restaurants({
 
   // console.log(shops);
 
-  const [ cuisineTags, setCuisineTags ] = useState({});
+  // const [ cuisineTags, setCuisineTags ] = useState(new Set<string>());
+  const [ cuisineTags, setCuisineTags ] = useState([""]);
 
   useEffect(() => {
     const allCuisines = shops.restaurants.map((restaurant: {[key: string]: any}) => {
       return restaurant.cuisines;
       
     });
-    // console.log(allCuisines);
-    setCuisineTags((new  Set(allCuisines.flat())))
-    console.log(cuisineTags);
+    const uniqueCuisines: string[] = Array.from(new  Set(allCuisines.flat()))
+    setCuisineTags(uniqueCuisines)
+    // console.log(cuisineTags);
   }, [])
 
   const fetchRestaurant = async () => {
@@ -82,7 +83,7 @@ export function Restaurants({
         };
         setRestaurantDetails(newRestaurantDetails);
       } catch (err) {
-        console.log('👹 ERROR:' + err)
+        // console.log('👹 ERROR:' + err)
       };
     };
   };
