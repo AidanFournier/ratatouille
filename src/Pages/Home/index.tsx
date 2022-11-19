@@ -40,7 +40,6 @@ export function Home(): JSX.Element {
       setCoords(newCoords)
       const resShops = await axios.get(urlShops);
       setRestaurants(resShops.data.shops);
-      
     } catch (err) {
       console.log('👹 ERROR:' + err)
     };
@@ -53,6 +52,9 @@ export function Home(): JSX.Element {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocation((e.target.value));
   };
+
+  console.log(restaurants);
+
 
 
   return (

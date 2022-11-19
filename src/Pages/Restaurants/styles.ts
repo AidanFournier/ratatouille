@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from "framer-motion/dist/framer-motion";
 
 import { Headline, PageWrapper, BREAKPOINTS, PageLink } from 'Layouts';
 import { pageTransitionEasing, slideUp } from 'styles';
@@ -32,7 +33,7 @@ export const CardImg = styled.img`
     margin-bottom: 10px;
 `
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
     box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
     max-width: 328px;
@@ -59,7 +60,7 @@ export const CardTitle = styled.h2`
    margin-bottom: 20px;
 `
 
-export const ResultsContainer = styled.div`
+export const ResultsContainer = styled(motion.div)`
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(1fr);
