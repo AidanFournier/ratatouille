@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import {  InputButton } from '@tablecheck/tablekit-input-button';
 import { SelectWrapper, Select } from "@tablecheck/tablekit-select";
+import { FilterContainer, FilterWrapper } from './styles';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
@@ -40,11 +41,10 @@ export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
          return {label: cuisine, 
         value: cuisine}
     }))
-    // console.log(cuisinesArray)
 
     return (
-        <div>
-            <SelectWrapper
+        <FilterContainer>
+            <FilterWrapper
                 id="cuisineChoice"
                 isMessageHidden
             >
@@ -56,15 +56,15 @@ export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
                 onChange={handleInput("cuisine")}
                 size="small"
                 />
-            </SelectWrapper>
+            </FilterWrapper>
 
             
-            <InputButton id="breakfast" name="breakfast" value="breakfast">
+            {/* <InputButton id="breakfast" name="breakfast" value="breakfast">
                 Business
             </InputButton>
             <InputButton id="breakfast" name="breakfast" value="breakfast">
                 Private
-            </InputButton>
-        </div>
+            </InputButton> */}
+        </FilterContainer>
     )
 }

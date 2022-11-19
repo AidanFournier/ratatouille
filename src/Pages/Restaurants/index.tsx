@@ -6,9 +6,8 @@ import axios from 'axios';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
 import {  FilterBar } from '../components/FilterBar';
-import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag  } from './styles';
+import { RestaurantsContent, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper  } from './styles';
 import { Modal } from './Modal';
-import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
 
@@ -103,14 +102,17 @@ export function Restaurants({
   return (
     <>
       <TopNav isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
-      <PageWrapper>
-        <PageContent>
+      <RestaurantsWrapper>
+        <RestaurantsContent>
           
-          <div className="controls__panel"></div>
+          <PanelContainer>
+            <div>Map</div>
             <FilterBar 
               cuisines={cuisineTags} 
               onCuisineFilter={handleFilterCuisine}
             />
+          </PanelContainer>
+
           <div>
             <h3 className="search-bar">Search results</h3>
             <h1 className="search-bar">{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your search</h1>
@@ -170,14 +172,15 @@ export function Restaurants({
                 }
             </ResultsContainer>
           </div>
-        </PageContent>
+
+        </RestaurantsContent>
  
         <Helmet>
           <title lang={language}>{`${t('attributes.titles.headline')} - ${t(
             'keywords.app_name'
           )}`}</title>
         </Helmet>
-      </PageWrapper>
+      </RestaurantsWrapper>
       <Footer />
     </>
   )
