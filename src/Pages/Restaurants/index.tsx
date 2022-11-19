@@ -20,7 +20,7 @@ const defaultRestaurantDetails = {
   phone: "",
   url: "",
   id: ""
-}
+};
 
 export function Restaurants({
   isDarkMode,
@@ -56,7 +56,7 @@ export function Restaurants({
     });
     const uniqueCuisines: string[] = Array.from(new  Set(allCuisines.flat()))
     setCuisineTags(uniqueCuisines)
-  }, [])
+  }, []);
 
  
 
@@ -117,8 +117,6 @@ export function Restaurants({
             <RestaurantsImage src={ RatThinking } alt="Rat with chef's hat" />
           </PanelContainer>
           
-
-
           <div>
             <RestaurantHeadline>Search results:</RestaurantHeadline>
             <RestaurantSubline>{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your craving.</RestaurantSubline>
