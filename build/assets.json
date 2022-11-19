@@ -209,8 +209,8 @@
     ]
   },
   "noentry": {
-    "html": [
-      "http://localhost:3000/index.html"
+    "png": [
+      "http://localhost:3000/static/media/rat-home.bb77c874.png"
     ]
   }
 }

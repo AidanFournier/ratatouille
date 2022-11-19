@@ -4,9 +4,8 @@ import { Outlet, useNavigate, Navigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
-// import { Form } from './Form';
 import { HomeHeadline, HomeWrapper, HomeInput, HomeSearchButton, HomeDescription, HomeForm, HomeImage } from './styles';
-// import RatHome from '..../public/static/img/rat-home.png'
+import RatHome from 'img/rat-home.png';
 
 const defaultCoords = {
   lat: "",
@@ -63,7 +62,7 @@ export function Home(): JSX.Element {
         <HomeInput type="search" id="search" name="location" value={location} onChange={onChange} />
         <HomeSearchButton type="submit">Search</HomeSearchButton>
       </HomeForm>
-      {/* <HomeImage src={RatHome} alt="Rat with chef's hat" /> */}
+      <HomeImage src={ RatHome } alt="Rat with chef's hat" />
 
 
       <Outlet />
