@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import {  InputButton } from '@tablecheck/tablekit-input-button';
-import { SelectWrapper, Select } from "@tablecheck/tablekit-select";
+import { Select } from "@tablecheck/tablekit-select";
 import { FilterContainer, FilterWrapper } from './styles';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,15 +17,12 @@ export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
         cuisine: ""
     });
 
-    
     const handleInput = (field: string) => (e: any) => {
         const value: string = e.value;
-    
         setFilters({
             ...filters,
             [field]: value
         });
-
         switch (field) {
             case "cuisine":
                 onCuisineFilter(value);
