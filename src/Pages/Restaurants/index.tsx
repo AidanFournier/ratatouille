@@ -6,8 +6,8 @@ import axios from 'axios';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
 import {  FilterBar } from '../components/FilterBar';
-import { RestaurantsContent, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper  } from './styles';
-import { Modal } from './Modal';
+import { RestaurantsContent, RestaurantHeadline, RestaurantSubline, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper  } from './styles';
+import { Modal } from '../components/Modal';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
 
@@ -17,8 +17,8 @@ const defaultRestaurantDetails = {
   banner_image: "",
   body: {},
   phone: "",
-  phone_natl: "",
-  url: ""
+  url: "",
+  id: ""
 }
 
 export function Restaurants({
@@ -116,8 +116,8 @@ export function Restaurants({
           </PanelContainer>
 
           <div>
-            <h3 className="search-bar">Search results</h3>
-            <h1 className="search-bar">{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your search</h1>
+            <RestaurantHeadline>Search results:</RestaurantHeadline>
+            <RestaurantSubline>{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your craving.</RestaurantSubline>
             <ResultsContainer layout>
                 {filteredShops.restaurants ? 
                   filteredShops.restaurants.map((restaurant: {[key: string]: any}) => {
@@ -134,13 +134,13 @@ export function Restaurants({
                   
                           <Modal 
                             handleClick={() => setSearchRestaurant(restaurant.slug)}
-                            name = {restaurantDetails.name}
-                            alt_address = {restaurantDetails.alt_address}
-                            banner_image = {restaurantDetails.banner_image}
-                            body = {restaurantDetails.body}
-                            phone = {restaurantDetails.phone}
-                            phone_natl = {restaurantDetails.phone_natl}
-                            url = {restaurantDetails.url}
+                            name={restaurantDetails.name}
+                            alt_address={restaurantDetails.alt_address}
+                            banner_image={restaurantDetails.banner_image}
+                            body={restaurantDetails.body}
+                            phone={restaurantDetails.phone}
+                            url={restaurantDetails.url}
+                            id={restaurantDetails.id}
                           />
                         </CardContainer>
                       </Card>)
@@ -165,8 +165,8 @@ export function Restaurants({
                           banner_image = {restaurantDetails.banner_image}
                           body = {restaurantDetails.body}
                           phone = {restaurantDetails.phone}
-                          phone_natl = {restaurantDetails.phone_natl}
                           url = {restaurantDetails.url}
+                          id={restaurantDetails.id}
                         />
                       </CardContainer>
                     </Card>)
