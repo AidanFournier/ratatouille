@@ -99,6 +99,8 @@ export function Restaurants({
     setRestaurantDetails(defaultRestaurantDetails);
   }, [searchRestaurant]);
 
+  console.log(filteredShops);
+
   return (
     <>
       <TopNav isDarkMode={isDarkMode} setDarkMode={setDarkMode} />

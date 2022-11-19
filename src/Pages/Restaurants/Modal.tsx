@@ -15,13 +15,14 @@ type ModalProps = {
     body: {[key: string]: any},
     phone: string,
     phone_natl: string,
-    url: string
+    url: string,
+    id: string
 }
 
-export function Modal ({handleClick, name, alt_address, banner_image, body, url}: ModalProps) {
+export function Modal ({handleClick, name, alt_address, banner_image, body, url, id}: ModalProps) {
     return (
         <ModalDialog
-            data-testid="Modal Test Id"
+            data-testid="Restaurant modal"
             hasCloseIcon
             width=
                 "regular"
@@ -33,7 +34,7 @@ export function Modal ({handleClick, name, alt_address, banner_image, body, url}
             More
             </CardButton>}
         >
-            <RestaurantModalContainer>
+            <RestaurantModalContainer key={id}>
                 <CardImg src={banner_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : banner_image} alt="Restaurant banner"/>
                 <CardTitle>
                     <span>{name[0] + " "}</span>
