@@ -32,14 +32,13 @@ export function Restaurants({
 }): JSX.Element {
   const [t, { language }] = useTranslation();
   const [ searchRestaurant, setSearchRestaurant ] = useState("");
-  const [ restaurantDetails, setRestaurantDetails ] = useState(defaultRestaurantDetails);
-  
+  const [ restaurantDetails, setRestaurantDetails ] = useState(defaultRestaurantDetails);  
 
   const urlShopSearch = `https://staging-snap.tablecheck.com/v2/shops/${searchRestaurant}`;
 
-  const shops = useLocation().state as {
+  const shops: {[key: string]: any} = useLocation().state as {
       restaurants: {[key: string]: any},
-      id: string,
+      _id: string,
       img: string,
       name: string,
       tags: string[],
@@ -49,20 +48,29 @@ export function Restaurants({
       content_body_translations: string
   };
 
-  // console.log(shops);
-
-  // const [ cuisineTags, setCuisineTags ] = useState(new Set<string>());
   const [ cuisineTags, setCuisineTags ] = useState([""]);
+  const [ filteredShops, setFilteredShops ] = useState(shops);
 
   useEffect(() => {
     const allCuisines = shops.restaurants.map((restaurant: {[key: string]: any}) => {
       return restaurant.cuisines;
-      
     });
     const uniqueCuisines: string[] = Array.from(new  Set(allCuisines.flat()))
     setCuisineTags(uniqueCuisines)
-    // console.log(cuisineTags);
   }, [])
+
+ 
+
+  const handleFilterCuisine = (cuisineChoice: string) => {
+    const filteredData = shops.restaurants?.filter((shop: {[key: string]: any}) => {
+      if(shop.cuisines.includes(cuisineChoice)) {
+        return shop;
+      }
+    });
+    setFilteredShops(filteredData);
+  };
+
+  console.log(filteredShops);
 
   const fetchRestaurant = async () => {
     if (searchRestaurant !== "") {
@@ -103,17 +111,17 @@ export function Restaurants({
         <PageContent>
           
           <div className="controls__panel"></div>
-            <FilterBar cuisines={cuisineTags} />
+            <FilterBar 
+              cuisines={cuisineTags} 
+              onCuisineFilter={handleFilterCuisine}
+            />
           <div>
-
-
-
             <h3 className="search-bar">Search results</h3>
-            <h1 className="search-bar">{shops.restaurants.length} places match your search</h1>
+            {/* <h1 className="search-bar">{filteredShops.restaurants.length} places match your search</h1> */}
             <ResultsContainer>
-              {shops.restaurants.map((restaurant: any) => {
+              {filteredShops.map((restaurant: {[key: string]: any}) => {
                 return (
-                  <Card key={restaurant.id}>
+                  <Card key={restaurant._id}>
                     <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
                     <CardContainer>
                       <CardTitle>{restaurant.name[1]}</CardTitle>
@@ -134,8 +142,8 @@ export function Restaurants({
                         url = {restaurantDetails.url}
                       />
                     </CardContainer>
-                  </Card>);
-              })};
+                  </Card>)
+              })}
             </ResultsContainer>
           </div>
         </PageContent>
