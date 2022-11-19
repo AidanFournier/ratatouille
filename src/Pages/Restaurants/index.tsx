@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
 import {  FilterBar } from '../components/FilterBar';
@@ -67,7 +68,7 @@ export function Restaurants({
         return shop;
       }
     });
-    setFilteredShops(filteredData);
+    setFilteredShops( filteredData);
   };
 
   console.log(filteredShops);
@@ -117,33 +118,63 @@ export function Restaurants({
             />
           <div>
             <h3 className="search-bar">Search results</h3>
-            {/* <h1 className="search-bar">{filteredShops.restaurants.length} places match your search</h1> */}
-            <ResultsContainer>
-              {filteredShops.map((restaurant: {[key: string]: any}) => {
-                return (
-                  <Card key={restaurant._id}>
-                    <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
-                    <CardContainer>
-                      <CardTitle>{restaurant.name[1]}</CardTitle>
-                      <TagsContainer>
-                        {restaurant.cuisines.map((cuisine: string) => {
-                          return <CardTag size="small" color="#7935D2">{cuisine}</CardTag>
-                        })}
-                      </TagsContainer>
-               
-                      <Modal 
-                        handleClick={() => setSearchRestaurant(restaurant.slug)}
-                        name = {restaurantDetails.name}
-                        alt_address = {restaurantDetails.alt_address}
-                        banner_image = {restaurantDetails.banner_image}
-                        body = {restaurantDetails.body}
-                        phone = {restaurantDetails.phone}
-                        phone_natl = {restaurantDetails.phone_natl}
-                        url = {restaurantDetails.url}
-                      />
-                    </CardContainer>
-                  </Card>)
-              })}
+            <h1 className="search-bar">{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your search</h1>
+            <ResultsContainer layout>
+              {/* <AnimatePresence> */}
+                {filteredShops.restaurants ? 
+                  filteredShops.restaurants.map((restaurant: {[key: string]: any}) => {
+                    return (
+                      <Card layout animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} key={restaurant._id}>
+                        <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
+                        <CardContainer>
+                          <CardTitle>{restaurant.name[1]}</CardTitle>
+                          <TagsContainer>
+                            {restaurant.cuisines.map((cuisine: string) => {
+                              return <CardTag size="small" color="#7935D2">{cuisine}</CardTag>
+                            })}
+                          </TagsContainer>
+                  
+                          <Modal 
+                            handleClick={() => setSearchRestaurant(restaurant.slug)}
+                            name = {restaurantDetails.name}
+                            alt_address = {restaurantDetails.alt_address}
+                            banner_image = {restaurantDetails.banner_image}
+                            body = {restaurantDetails.body}
+                            phone = {restaurantDetails.phone}
+                            phone_natl = {restaurantDetails.phone_natl}
+                            url = {restaurantDetails.url}
+                          />
+                        </CardContainer>
+                      </Card>)
+                  })
+                : 
+                filteredShops.map((restaurant: {[key: string]: any}) => {
+                  return (
+                    <Card layout className="child" animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} key={restaurant._id}>
+                      <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
+                      <CardContainer>
+                        <CardTitle>{restaurant.name[1]}</CardTitle>
+                        <TagsContainer>
+                          {restaurant.cuisines.map((cuisine: string) => {
+                            return <CardTag size="small" color="#7935D2">{cuisine}</CardTag>
+                          })}
+                        </TagsContainer>
+                
+                        <Modal 
+                          handleClick={() => setSearchRestaurant(restaurant.slug)}
+                          name = {restaurantDetails.name}
+                          alt_address = {restaurantDetails.alt_address}
+                          banner_image = {restaurantDetails.banner_image}
+                          body = {restaurantDetails.body}
+                          phone = {restaurantDetails.phone}
+                          phone_natl = {restaurantDetails.phone_natl}
+                          url = {restaurantDetails.url}
+                        />
+                      </CardContainer>
+                    </Card>)
+                })
+                }
+              {/* </AnimatePresence> */}
             </ResultsContainer>
           </div>
         </PageContent>
