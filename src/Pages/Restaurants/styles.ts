@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { motion } from "framer-motion/dist/framer-motion";
 
-import { Headline, PageWrapper, BREAKPOINTS, PageLink } from 'Layouts';
+import { Headline, PageWrapper, BREAKPOINTS, PageContent } from 'Layouts';
 import { pageTransitionEasing, slideUp } from 'styles';
 import { Button } from '@tablecheck/tablekit-button';
 import { Tag } from '@tablecheck/tablekit-tag';
 
 
-export const HomeWrapper = styled(PageWrapper)`
+export const RestaurantsWrapper = styled(PageWrapper)`
   max-width: initial;
   animation: ${slideUp} ${pageTransitionEasing} 0.5s;
 `;
@@ -16,12 +16,23 @@ export const HomeHeadline = styled(Headline)`
   text-align: center;
 `;
 
+export const RestaurantsContent = styled(PageContent)`
+    margin: 4rem;
+    gap: 2rem;
+    align-items: center;
+
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+        align-items: flex-start;
+    }
+`;
+
 export const CardButton = styled(Button)`
     margin-top: auto;
-`
+`;
+
 export const CardTag = styled(Tag)`
     margin: 0 5px 5px 0;
-`
+`;
 
 export const CardImg = styled.img`
     background: cover;
@@ -31,7 +42,7 @@ export const CardImg = styled.img`
     object-fit: cover;
     border-radius: 25px 25px 0 0;
     margin-bottom: 10px;
-`
+`;
 
 export const Card = styled(motion.div)`
     box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
@@ -44,21 +55,25 @@ export const Card = styled(motion.div)`
     &:hover {
         box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
     }
-`
+`;
 
 export const CardContainer = styled.div`
     padding: 0 25px 25px 25px;
-`
+`;
+
+export const PanelContainer = styled.div`
+    width: 328px;
+`;
 
 export const TagsContainer = styled.div`
     display: flex;
     margin-bottom: 10px;
     flex-wrap: wrap;
-`
+`;
 
 export const CardTitle = styled.h2`
    margin-bottom: 20px;
-`
+`;
 
 export const ResultsContainer = styled(motion.div)`
     display: grid;
@@ -73,7 +88,7 @@ export const ResultsContainer = styled(motion.div)`
     @media (min-width: ${BREAKPOINTS.desktop}) {
         grid-template-columns: repeat(3, 1fr);
     }
-`
+`;
 
 export const RestaurantModalContainer = styled.div`
     margin: 10px 0;
@@ -85,7 +100,7 @@ export const RestaurantModalContainer = styled.div`
     @media (min-width: ${BREAKPOINTS.tablet}) {
         margin: 10px;
     }
-`
+`;
 
 export const FlexSection = styled.div`
     display: flex;
@@ -99,4 +114,4 @@ export const FlexSection = styled.div`
     @media (min-width: ${BREAKPOINTS.tablet}) {
         flex-direction: row;
     }
-`
+`;
