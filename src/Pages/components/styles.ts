@@ -4,7 +4,6 @@ import { SelectWrapper } from "@tablecheck/tablekit-select";
 import { BREAKPOINTS } from 'Layouts';
 import { ModalDialog } from '@tablecheck/tablekit-modal-dialog';
 
-
 export const FilterContainer = styled.div`
     box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
     border-radius: 25px;

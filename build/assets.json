@@ -210,7 +210,8 @@
   },
   "noentry": {
     "png": [
-      "http://localhost:3000/static/media/rat-home.bb77c874.png"
+      "http://localhost:3000/static/media/rat-home.bb77c874.png",
+      "http://localhost:3000/static/media/rat-thinking.497f699f.png"
     ]
   }
 }
