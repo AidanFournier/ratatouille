@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion/dist/framer-motion";
 
 import { Headline, PageWrapper, BREAKPOINTS, PageLink } from 'Layouts';
 import { pageTransitionEasing, slideUp } from 'styles';

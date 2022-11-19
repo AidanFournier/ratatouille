@@ -3,16 +3,14 @@ import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
 import {  FilterBar } from '../components/FilterBar';
-import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardButton, CardTag  } from './styles';
+import { Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag  } from './styles';
 import { Modal } from './Modal';
 import { PageWrapper, PageContent, Headline, PageImage} from 'Layouts';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
-import { use } from 'i18next';
 
 const defaultRestaurantDetails = {
   name: "",
@@ -102,9 +100,6 @@ export function Restaurants({
     setRestaurantDetails(defaultRestaurantDetails);
   }, [searchRestaurant]);
 
-  // console.log(location);
-  // console.log(restaurantDetails);
-
   return (
     <>
       <TopNav isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
@@ -120,7 +115,6 @@ export function Restaurants({
             <h3 className="search-bar">Search results</h3>
             <h1 className="search-bar">{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your search</h1>
             <ResultsContainer layout>
-              {/* <AnimatePresence> */}
                 {filteredShops.restaurants ? 
                   filteredShops.restaurants.map((restaurant: {[key: string]: any}) => {
                     return (
@@ -174,7 +168,6 @@ export function Restaurants({
                     </Card>)
                 })
                 }
-              {/* </AnimatePresence> */}
             </ResultsContainer>
           </div>
         </PageContent>
