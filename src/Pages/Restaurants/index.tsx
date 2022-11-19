@@ -44,7 +44,11 @@ export function Restaurants({
       cuisines: string[],
       distance: number,
       slug: string,
-      content_body_translations: string
+      content_body_translations: string,
+      budget_dinner_max: string, 
+      budget_dinner_min: string,
+      budget_lunch_max: string,
+      budget_lunch_min: string
   };
 
   const [ cuisineTags, setCuisineTags ] = useState([""]);
@@ -83,8 +87,6 @@ export function Restaurants({
           body: res.data.shops[0].content_body_translations,
           title: res.data.shops[0].content_title_translations,
           phone: res.data.shops[0].phone,
-          phone_natl: res.data.shops[0].phone_natl,
-          stations: res.data.shops[0].stations,
           url: res.data.shops[0].url,
           id: res.data.shops[0]._id
         };
@@ -113,6 +115,7 @@ export function Restaurants({
             <FilterBar 
               cuisines={cuisineTags} 
               onCuisineFilter={handleFilterCuisine}
+
             />
             <RestaurantsImage src={ RatThinking } alt="Rat with chef's hat" />
           </PanelContainer>

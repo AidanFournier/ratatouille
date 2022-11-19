@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import 'rc-slider/assets/index.css';
 
 import { Select } from "@tablecheck/tablekit-select";
 import { FilterContainer, FilterWrapper } from './styles';
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -52,6 +52,7 @@ export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
                 onChange={handleInput("cuisine")}
                 size="small"
                 />
+
             </FilterWrapper>
 
             
