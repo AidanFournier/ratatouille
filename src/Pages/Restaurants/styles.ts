@@ -33,6 +33,15 @@ export const RestaurantsContent = styled(PageContent)`
     }
 `;
 
+export const RestaurantsImage = styled.img`
+   display: none;
+   width: 8rem;
+   margin-top: 3rem;
+   @media (min-width: ${BREAKPOINTS.tablet}) {
+        display: block;
+    }
+`
+
 export const CardButton = styled(Button)`
     margin-top: auto;
 `;

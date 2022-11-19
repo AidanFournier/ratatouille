@@ -44,6 +44,13 @@ export const HomeForm = styled.form`
   }
 `
 
-export const HomeImage = styled(PageImage)`
-  display: inline-block;
+export const HomeImage = styled.img`
+  width: 4rem;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  @media (min-width: ${BREAKPOINTS.tablet}) {
+    width: 8rem;
+    bottom: 5rem;
+  }
 `

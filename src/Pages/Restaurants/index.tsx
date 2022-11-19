@@ -6,10 +6,11 @@ import axios from 'axios';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
 import {  FilterBar } from '../components/FilterBar';
-import { RestaurantsContent, RestaurantHeadline, RestaurantSubline, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper  } from './styles';
+import { RestaurantsContent, RestaurantHeadline, RestaurantSubline, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper, RestaurantsImage  } from './styles';
 import { Modal } from '../components/Modal';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
+import RatThinking from 'img/rat-thinking.png';
 
 const defaultRestaurantDetails = {
   name: "",
@@ -19,7 +20,7 @@ const defaultRestaurantDetails = {
   phone: "",
   url: "",
   id: ""
-}
+};
 
 export function Restaurants({
   isDarkMode,
@@ -55,7 +56,7 @@ export function Restaurants({
     });
     const uniqueCuisines: string[] = Array.from(new  Set(allCuisines.flat()))
     setCuisineTags(uniqueCuisines)
-  }, [])
+  }, []);
 
  
 
@@ -113,8 +114,9 @@ export function Restaurants({
               cuisines={cuisineTags} 
               onCuisineFilter={handleFilterCuisine}
             />
+            <RestaurantsImage src={ RatThinking } alt="Rat with chef's hat" />
           </PanelContainer>
-
+          
           <div>
             <RestaurantHeadline>Search results:</RestaurantHeadline>
             <RestaurantSubline>{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your craving.</RestaurantSubline>
