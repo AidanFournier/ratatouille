@@ -12,8 +12,15 @@ export const RestaurantsWrapper = styled(PageWrapper)`
   animation: ${slideUp} ${pageTransitionEasing} 0.5s;
 `;
 
-export const HomeHeadline = styled(Headline)`
-  text-align: center;
+export const RestaurantHeadline = styled(Headline)`
+  text-align: left;
+  margin: 0;
+`;
+
+export const RestaurantSubline = styled.h2`
+  text-align: left;
+  margin: 0 0 1rem 0;
+  font-size: 20px;
 `;
 
 export const RestaurantsContent = styled(PageContent)`
@@ -87,18 +94,6 @@ export const ResultsContainer = styled(motion.div)`
 
     @media (min-width: ${BREAKPOINTS.desktop}) {
         grid-template-columns: repeat(3, 1fr);
-    }
-`;
-
-export const RestaurantModalContainer = styled.div`
-    margin: 10px 0;
-    h4 {
-        padding-bottom: 15px;
-        margin: 10px 0;
-        border-bottom: 1px solid;
-    }
-    @media (min-width: ${BREAKPOINTS.tablet}) {
-        margin: 10px;
     }
 `;
 

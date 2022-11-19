@@ -53,10 +53,6 @@ export function Home(): JSX.Element {
     setLocation((e.target.value));
   };
 
-  console.log(restaurants);
-
-
-
   return (
     <HomeWrapper>
       <HomeHeadline>Welcome to Ratatouille</HomeHeadline>
