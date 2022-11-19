@@ -55,7 +55,7 @@ export function TopNav({
       <TopNavContent>
         <LogoWrapper to={`/${language}`}>
           <LogoSymbol size="24px" />
-          <LogoWording>{t('keywords.app_name')}</LogoWording>
+          <LogoWording>Ratatouille</LogoWording>
         </LogoWrapper>
         <div style={{ display: 'flex' }}>
           <DesktopOnlyItems>

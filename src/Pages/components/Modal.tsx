@@ -1,10 +1,9 @@
 import { CardImg, CardTitle, CardButton, FlexSection } from '../Restaurants/styles';
 import { RestaurantModalDialog, RestaurantModalContainer } from './styles';
 import { Link as TKLink } from '@tablecheck/tablekit-typography';
+import { Icon } from '@tablecheck/tablekit-icon';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin, faLink, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type ModalProps = {
     handleClick: () => void,
@@ -42,15 +41,15 @@ export function Modal ({handleClick, name, alt_address, banner_image, body, url,
                     {body[1]? <span>{`${body[1].translation}`}</span> : ""}
                 </h4>
                 <FlexSection>
-                    <p><FontAwesomeIcon icon={faLink as IconProp} /></p>
+                <p>{<Icon icon={faLink} />}</p>
                     <TKLink href={url}><p>{url}</p></TKLink>
                 </FlexSection>
                 <FlexSection>
-                    <p><FontAwesomeIcon icon={faPhone as IconProp} /></p>
+                <p>{<Icon icon={faPhone} />}</p>
                     <TKLink href={"tel:" + phone}><p>{phone}</p></TKLink>
                 </FlexSection>
                 <FlexSection>
-                    <p><FontAwesomeIcon icon={faMapPin as IconProp} /></p>
+                    <p>{<Icon icon={faMapPin} />}</p>
                     <p>{alt_address.street2}</p>
                     <p>{alt_address.street}</p>
                     <p>{alt_address.city}</p>
