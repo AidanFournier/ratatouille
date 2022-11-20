@@ -8,7 +8,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWlkenNoYWtlIiwiYSI6ImNsYW93NzBtZTBtNHYzdG9hM
 
 type MapProps = {
     restaurants: {[key: string]: any}
-}
+};
 
 export function Map ({restaurants}: MapProps) {
     const mapContainer = useRef<any>(null);
@@ -17,9 +17,7 @@ export function Map ({restaurants}: MapProps) {
         lat: 35.6762,
         long: 139.6503,
         zoom: 10
-    })
-
-    console.log(restaurants);
+    });
 
     useEffect(() => {
         if (map.current) return;
@@ -48,5 +46,5 @@ export function Map ({restaurants}: MapProps) {
     return (
         <MapContainer ref={mapContainer} style={{width: '100%', height:'40vh'}}>
         </MapContainer>
-    )
-}
+    );
+};
