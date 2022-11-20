@@ -12,6 +12,7 @@ export const FilterContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
+    margin-top: 2rem;
 `;
 
 export const FilterWrapper = styled(SelectWrapper)`
@@ -33,3 +34,8 @@ export const RestaurantModalContainer = styled.div`
         margin: 20px;
     }
 `;
+
+export const MapContainer = styled.div`
+    box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+`

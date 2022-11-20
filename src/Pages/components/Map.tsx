@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
+import {  MapContainer } from './styles';
+
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 var marker = require('mapbox-gl/dist/mapbox-gl.js');
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWlkenNoYWtlIiwiYSI6ImNsYW93NzBtZTBtNHYzdG9hM21tNHB0ZjkifQ.h-TKUdMdz0KeFbwbAzdtGg';
@@ -44,10 +46,7 @@ export function Map ({restaurants}: MapProps) {
     }, [restaurants]);
 
     return (
-        <div 
-            ref={mapContainer} 
-            style={{width: '100%', height:'50vh'}}
-        >
-            </div>
+        <MapContainer ref={mapContainer} style={{width: '100%', height:'40vh'}}>
+        </MapContainer>
     )
 }
