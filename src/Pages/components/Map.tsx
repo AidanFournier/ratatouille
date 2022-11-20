@@ -44,6 +44,10 @@ export function Map ({restaurants}: MapProps) {
     }, [restaurants]);
 
     return (
-        <div ref={mapContainer} style={{width: '100%', height:'50vh'}}></div>
+        <div 
+            ref={mapContainer} 
+            style={{width: '100%', height:'50vh'}}
+        >
+            </div>
     )
 }
