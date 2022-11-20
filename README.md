@@ -1,16 +1,27 @@
-# TableCheck's SPA Boilerplate
+# Ratatouille
 
-DEMO: [tc-spa-boilerplate.netlify.app](https://tc-spa-boilerplate.netlify.app)
+Discover restaurants across Japan with this search engine application. Created with React, TypeScript, and Emotion.
 
-## Features
+![Home page](https://user-images.githubusercontent.com/78288118/202905810-8ebf53b9-d373-4f53-ac70-d5d983edc120.png)
+![Results page](https://user-images.githubusercontent.com/78288118/202905831-fca9ff76-5e9e-4013-abed-2a092bce93dd.png)
 
-- Main tech stack: React, TypeScript, Emotion, i18n
-- Tablekit integration with FontAwesome icons and Dark Mode
-- Basic localized routing
-- Basic layout with footer, top and side navs
-- Language Selection
-- Responsive
-- Basic FormSpree contact form
+## URL
+[Ratatouille's live site](https://637a1e1c47398b29fc74329f--chic-pegasus-d27631.netlify.app/restaurants/)
+
+## Technologies
+
+<h3 align="left">Languages and tools:</h3>
+<a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="react" width="40" height="40"/> </a>
+<a href="https://devicon.dev/" target="_blank"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="40" height="40"/> </a> 
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a>
+<a href="https://github.com/emotion-js/emotion" target="_blank"> <img src="https://raw.githubusercontent.com/emotion-js/emotion/main/emotion.png" alt="Emotion logo" width="40" height="40"/> </a>
+<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
+<a href="https://git-scm.com/" target="_blank"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="git" width="40" height="40"/> </a> 
+
+<h3 align="left">Other tools used:</h3>
+
+* [TableKit UI](http://tablekit.tablecheck.com/?path=/docs/intro--page)
+* [Mapbox API](https://www.mapbox.com/)
 
 ## Getting started
 
@@ -34,12 +45,6 @@ Instructions for a Netlify setup:
 - Deploy site
 - You can change the URL name on `Site settings > Change site name`
 
-## Caveats
-
-- At some point, if the project becomes a real product, all the files in `/public/static/img` and `/public/static/fonts`
-  should be removed and loaded from a CDN
-- The CDN URL should be specified in `/config/default.json`
-
 ## Upgrade
 
 To upgrade this boilerplate and use the latest configuration and dependencies, please run this command and select SPA
@@ -47,35 +52,13 @@ when asked:
 
 `npx --legacy-peer-deps -p @tablecheck/scripts tablecheck-scripts init`
 
-## Support
 
-Create an issue in the Github repository
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Credits
+This project was bootstrapped with [TableCheck's SPA Boilerplate](https://github.com/tablecheck/spa-boilerplate).
 
 ## Resources
 
 - [i18n Manager](https://www.electronjs.org/apps/i18n-manager): helpful editor for the translations
-
-## Contributing
-
-Pull requests for bug fixes and suggestions are welcome. Please **do not raise a PR for take-home assignments**. For
-major changes, please open an issue first to discuss what you
-would like to change. Please make sure to update tests as appropriate.
-
-## About Us
-
-SPA Boilerplate is made with ❤️ by [TableCheck](https://www.tablecheck.com/en/join/),
-the leading restaurant reservation and guest management app maker. If **you** are a
-ninja-level 🥷 coder (Javascript / Ruby / Elixir / Python / Go), designer, product manager,
-data scientist, QA, etc. and are ready to join us in Tokyo, Japan or work remotely,
-please get in touch at [careers@tablecheck.com](mailto:careers@tablecheck.com)
-or [careers.tablecheck.com](https://careers.tablecheck.com).
-
-## License
-
-SPA Boilerplate is licensed under the MIT license.
-
-## Copyright
-
-Copyright (c) 2022 TableCheck Inc.
-
-Text Fonts from [IBM](https://github.com/IBM/plex/releases/)
