@@ -43,4 +43,4 @@ export const MapContainer = styled.div`
         font-size: 14px;
         color: black;
     }
-`
+`;
