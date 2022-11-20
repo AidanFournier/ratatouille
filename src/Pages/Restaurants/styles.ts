@@ -4,8 +4,6 @@ import { motion } from "framer-motion/dist/framer-motion";
 import { Headline, PageWrapper, BREAKPOINTS, PageContent } from 'Layouts';
 import { pageTransitionEasing, slideUp } from 'styles';
 import { Button } from '@tablecheck/tablekit-button';
-import { Tag } from '@tablecheck/tablekit-tag';
-
 
 export const RestaurantsWrapper = styled(PageWrapper)`
   max-width: initial;
@@ -25,11 +23,15 @@ export const RestaurantSubline = styled.h2`
 
 export const RestaurantsContent = styled(PageContent)`
     margin: 4rem;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
-
     @media (min-width: ${BREAKPOINTS.tablet}) {
         align-items: flex-start;
+        gap: 1.5rem;
+    }
+    @media (min-width: ${BREAKPOINTS.desktop}) {
+        align-items: flex-start;
+        gap: 4rem;
     }
 `;
 
@@ -40,55 +42,15 @@ export const RestaurantsImage = styled.img`
    @media (min-width: ${BREAKPOINTS.tablet}) {
         display: block;
     }
-`
+`;
 
 export const CardButton = styled(Button)`
-    margin-top: auto;
-`;
-
-export const CardTag = styled(Tag)`
-    margin: 0 5px 5px 0;
-`;
-
-export const CardImg = styled.img`
-    background: cover;
-    align-self: center;
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 25px 25px 0 0;
-    margin-bottom: 10px;
-`;
-
-export const Card = styled(motion.div)`
-    box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
-    border-radius: 25px;
-    max-width: 328px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 400ms ease;
-    &:hover {
-        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
-    }
-`;
-
-export const CardContainer = styled.div`
-    padding: 0 25px 25px 25px;
+    margin: auto 4rem 2rem 4rem;
+    
 `;
 
 export const PanelContainer = styled.div`
     width: 328px;
-`;
-
-export const TagsContainer = styled.div`
-    display: flex;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-`;
-
-export const CardTitle = styled.h2`
-   margin-bottom: 20px;
 `;
 
 export const ResultsContainer = styled(motion.div)`
@@ -98,11 +60,12 @@ export const ResultsContainer = styled(motion.div)`
     gap: 2.5rem;
 
     @media (min-width: ${BREAKPOINTS.tablet}) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1fr);
     }
 
     @media (min-width: ${BREAKPOINTS.desktop}) {
         grid-template-columns: repeat(3, 1fr);
+        gaap: 4rem;
     }
 `;
 
@@ -118,5 +81,24 @@ export const FlexSection = styled.div`
     }
     @media (min-width: ${BREAKPOINTS.tablet}) {
         flex-direction: row;
+    }
+`;
+
+export const CardComponent = styled(motion.div)`
+    box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    width: 328px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 400ms ease;
+    &:hover {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+        max-width: 25rem;
+    }
+    @media (min-width: ${BREAKPOINTS.desktop}) {
+        max-width: 328px;
     }
 `;

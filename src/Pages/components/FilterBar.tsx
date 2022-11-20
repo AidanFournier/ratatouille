@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { Select } from "@tablecheck/tablekit-select";
 import { FilterContainer, FilterWrapper } from './styles';
@@ -9,7 +9,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 type FilterProps = {
     cuisines: string[],
     onCuisineFilter: (a:string) => void
-}
+};
 
 export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
     const [ filters, setFilters ] = useState({
@@ -35,7 +35,7 @@ export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
     cuisinesArray = cuisinesArray.concat(cuisines.map((cuisine: {}) => {
          return {label: cuisine, 
         value: cuisine}
-    }))
+    }));
 
     return (
         <FilterContainer>
@@ -51,16 +51,7 @@ export function FilterBar ({cuisines, onCuisineFilter}: FilterProps) {
                 onChange={handleInput("cuisine")}
                 size="small"
                 />
-
             </FilterWrapper>
-
-            
-            {/* <InputButton id="breakfast" name="breakfast" value="breakfast">
-                Business
-            </InputButton>
-            <InputButton id="breakfast" name="breakfast" value="breakfast">
-                Private
-            </InputButton> */}
         </FilterContainer>
-    )
-}
+    );
+};
