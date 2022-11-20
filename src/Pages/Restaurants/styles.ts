@@ -25,11 +25,15 @@ export const RestaurantSubline = styled.h2`
 
 export const RestaurantsContent = styled(PageContent)`
     margin: 4rem;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
-
     @media (min-width: ${BREAKPOINTS.tablet}) {
         align-items: flex-start;
+        gap: 1.5rem;
+    }
+    @media (min-width: ${BREAKPOINTS.desktop}) {
+        align-items: flex-start;
+        gap: 4rem;
     }
 `;
 
@@ -63,13 +67,19 @@ export const CardImg = styled.img`
 export const Card = styled(motion.div)`
     box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
-    max-width: 328px;
+    width: 328px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: all 400ms ease;
     &:hover {
         box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    @media (min-width: ${BREAKPOINTS.tablet}) {
+        max-width: 25rem;
+    }
+    @media (min-width: ${BREAKPOINTS.desktop}) {
+        max-width: 18rem;
     }
 `;
 
@@ -98,11 +108,12 @@ export const ResultsContainer = styled(motion.div)`
     gap: 2.5rem;
 
     @media (min-width: ${BREAKPOINTS.tablet}) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1fr);
     }
 
     @media (min-width: ${BREAKPOINTS.desktop}) {
         grid-template-columns: repeat(3, 1fr);
+        gaap: 4rem;
     }
 `;
 
