@@ -110,6 +110,7 @@ export const FlexSection = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
     p {
         padding-right: 5px;
         font-size: 14px;
