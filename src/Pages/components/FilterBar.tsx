@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import 'rc-slider/assets/index.css';
 
 import { Select } from "@tablecheck/tablekit-select";
 import { FilterContainer, FilterWrapper } from './styles';
