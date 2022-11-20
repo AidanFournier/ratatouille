@@ -23,6 +23,8 @@ Discover restaurants across Japan with this search engine application. Created w
 * [TableKit UI](http://tablekit.tablecheck.com/?path=/docs/intro--page)
 * [Mapbox API](https://www.mapbox.com/)
 
+This project was bootstrapped with [TableCheck's SPA Boilerplate](https://github.com/tablecheck/spa-boilerplate).
+
 ## Getting started
 
 - Install [Node.js](https://nodejs.org/en/download/) and [NVM](https://github.com/nvm-sh/nvm#installing-and-updating)
@@ -55,9 +57,6 @@ when asked:
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## Credits
-This project was bootstrapped with [TableCheck's SPA Boilerplate](https://github.com/tablecheck/spa-boilerplate).
 
 ## Resources
 
