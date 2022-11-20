@@ -38,4 +38,9 @@ export const RestaurantModalContainer = styled.div`
 export const MapContainer = styled.div`
     box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
+    h4 {
+        text-align: center;
+        font-size: 14px;
+        color: black;
+    }
 `

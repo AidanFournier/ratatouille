@@ -34,12 +34,12 @@ export function Map ({restaurants}: MapProps) {
     useEffect(() => {
         document.querySelectorAll(".mapboxgl-marker").forEach(el => el.remove());
 
-        restaurants.map((restaurant: {[key: number]: any}) => {
+        restaurants.map((restaurant: any) => {
             var marker = new mapboxgl.Marker()
                 .setLngLat([restaurant.geocode.lon, restaurant.geocode.lat])
                 .setPopup(
                     new mapboxgl.Popup({ offset: 30 })
-                        .setHTML('<h4>' + 'Tokyo' + '<h4>')
+                        .setHTML(`<h4>${restaurant.name[1]}<h4>`)
                 )
                 .addTo(map.current)
         });
