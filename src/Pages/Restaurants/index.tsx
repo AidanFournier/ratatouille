@@ -47,11 +47,7 @@ export function Restaurants({
       distance: number,
       geocode: {[key: number]: any},
       slug: string,
-      content_body_translations: string,
-      budget_dinner_max: string, 
-      budget_dinner_min: string,
-      budget_lunch_max: string,
-      budget_lunch_min: string
+      content_body_translations: string
   };
 
   const [ cuisineTags, setCuisineTags ] = useState([""]);
