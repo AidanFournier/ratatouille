@@ -1,4 +1,5 @@
-import { CardImg, CardTitle, CardButton, FlexSection } from '../Restaurants/styles';
+import { CardButton, FlexSection } from '../Restaurants/styles';
+import { CardImg, CardTitle } from './styles'
 import { RestaurantModalDialog, RestaurantModalContainer } from './styles';
 import { Link as TKLink } from '@tablecheck/tablekit-typography';
 import { Icon } from '@tablecheck/tablekit-icon';
@@ -58,5 +59,5 @@ export function Modal ({handleClick, name, alt_address, banner_image, body, url,
                 </FlexSection>
             </RestaurantModalContainer>
         </RestaurantModalDialog>
-    )
+    );
 };

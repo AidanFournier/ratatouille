@@ -7,7 +7,8 @@ import axios from 'axios';
 
 import { FilterBar } from '../components/FilterBar';
 import { Map } from '../components/Map';
-import { RestaurantsContent, RestaurantHeadline, RestaurantSubline, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper, RestaurantsImage  } from './styles';
+import { RestaurantsContent, RestaurantHeadline, RestaurantSubline, ResultsContainer, PanelContainer, RestaurantsWrapper, RestaurantsImage, CardComponent } from './styles';
+import { Card } from '../components/Card';
 import { Modal } from '../components/Modal';
 import { TopNav } from 'Layouts/TopNav';
 import { Footer } from 'Layouts/Footer';
@@ -73,8 +74,6 @@ export function Restaurants({
     setFilteredShops(filteredData);
   };
 
-  // console.log(filteredShops);
-
   const fetchRestaurant = async () => {
     if (searchRestaurant !== "") {
       try { 
@@ -102,8 +101,6 @@ export function Restaurants({
     setRestaurantDetails(defaultRestaurantDetails);
   }, [searchRestaurant]);
 
-  console.log(filteredShops);
-
   const pluralize = (length: number) => {
     if (length === 0) {
       return "places match your craving :("
@@ -120,7 +117,6 @@ export function Restaurants({
       <RestaurantsWrapper>
         <RestaurantsContent>
           <PanelContainer>
-            
             <Map
               restaurants={filteredShops.restaurants ? filteredShops.restaurants : filteredShops}
             />
@@ -138,59 +134,50 @@ export function Restaurants({
                 {filteredShops.restaurants ? 
                   filteredShops.restaurants.map((restaurant: {[key: string]: any}) => {
                     return (
-                      <Card layout animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} key={restaurant._id}>
-                        <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
-                        <CardContainer>
-                          <CardTitle>{restaurant.name[1]}</CardTitle>
-                          <TagsContainer>
-                            {restaurant.cuisines.map((cuisine: string) => {
-                              return <CardTag size="small" color="#7935D2">{cuisine}</CardTag>
-                            })}
-                          </TagsContainer>
-                  
-                          <Modal 
-                            handleClick={() => setSearchRestaurant(restaurant.slug)}
-                            name={restaurantDetails.name}
-                            alt_address={restaurantDetails.alt_address}
-                            banner_image={restaurantDetails.banner_image}
-                            body={restaurantDetails.body}
-                            phone={restaurantDetails.phone}
-                            url={restaurantDetails.url}
-                            id={restaurantDetails.id}
-                          />
-                        </CardContainer>
-                      </Card>)
-                  })
+                      <CardComponent layout animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
+                        <Card
+                          id={restaurant._id}
+                          image={restaurant.search_image}
+                          name={restaurant.name}
+                          cuisines={restaurant.cuisines}
+                        ></Card>
+                        <Modal
+                        handleClick={() => setSearchRestaurant(restaurant.slug)}
+                        name={restaurantDetails.name}
+                        alt_address={restaurantDetails.alt_address}
+                        banner_image={restaurantDetails.banner_image}
+                        body={restaurantDetails.body}
+                        phone={restaurantDetails.phone}
+                        url={restaurantDetails.url}
+                        id={restaurantDetails.id}
+                        ></Modal> 
+                      </CardComponent>    
+                  )})
                 : 
-                filteredShops.map((restaurant: {[key: string]: any}) => {
-                  return (
-                    <Card layout className="child" animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }} key={restaurant._id}>
-                      <CardImg src={restaurant.search_image === undefined ? "https://images.unsplash.com/photo-1569994652340-8bcae2f75ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" : restaurant.search_image} alt="Restaurant cover" />
-                      <CardContainer>
-                        <CardTitle>{restaurant.name[1]}</CardTitle>
-                        <TagsContainer>
-                          {restaurant.cuisines.map((cuisine: string) => {
-                            return <CardTag size="small" color="#7935D2">{cuisine}</CardTag>
-                          })}
-                        </TagsContainer>
-                
-                        <Modal 
+                  filteredShops.map((restaurant: {[key: string]: any}) => {
+                    return (
+                      <>
+                          <Card
+                            id={restaurant._id}
+                            image={restaurant.search_image}
+                            name={restaurant.name}
+                            cuisines={restaurant.cuisines}
+                          ></Card>
+                          <Modal
                           handleClick={() => setSearchRestaurant(restaurant.slug)}
-                          name = {restaurantDetails.name}
-                          alt_address = {restaurantDetails.alt_address}
-                          banner_image = {restaurantDetails.banner_image}
-                          body = {restaurantDetails.body}
-                          phone = {restaurantDetails.phone}
-                          url = {restaurantDetails.url}
+                          name={restaurantDetails.name}
+                          alt_address={restaurantDetails.alt_address}
+                          banner_image={restaurantDetails.banner_image}
+                          body={restaurantDetails.body}
+                          phone={restaurantDetails.phone}
+                          url={restaurantDetails.url}
                           id={restaurantDetails.id}
-                        />
-                      </CardContainer>
-                    </Card>)
-                })
+                          ></Modal> 
+                        </>)
+                  })
                 }
             </ResultsContainer>
           </div>
-
         </RestaurantsContent>
  
         <Helmet>
@@ -201,5 +188,5 @@ export function Restaurants({
       </RestaurantsWrapper>
       <Footer />
     </>
-  )
+  );
 };
