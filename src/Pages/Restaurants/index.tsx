@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 // import { useRestaurants } from '.../contexts/RestaurantContext'
 
-import {  FilterBar } from '../components/FilterBar';
+import { FilterBar } from '../components/FilterBar';
+import { Map } from '../components/Map';
 import { RestaurantsContent, RestaurantHeadline, RestaurantSubline, Card, CardImg, CardContainer, TagsContainer, CardTitle, ResultsContainer, CardTag, PanelContainer, RestaurantsWrapper, RestaurantsImage  } from './styles';
 import { Modal } from '../components/Modal';
 import { TopNav } from 'Layouts/TopNav';
@@ -43,6 +44,7 @@ export function Restaurants({
       tags: string[],
       cuisines: string[],
       distance: number,
+      geocode: {[key: number]: any},
       slug: string,
       content_body_translations: string,
       budget_dinner_max: string, 
@@ -62,8 +64,6 @@ export function Restaurants({
     setCuisineTags(uniqueCuisines)
   }, []);
 
- 
-
   const handleFilterCuisine = (cuisineChoice: string) => {
     const filteredData = shops.restaurants?.filter((shop: {[key: string]: any}) => {
       if(shop.cuisines.includes(cuisineChoice)) {
@@ -73,7 +73,7 @@ export function Restaurants({
     setFilteredShops(filteredData);
   };
 
-  console.log(filteredShops);
+  // console.log(filteredShops);
 
   const fetchRestaurant = async () => {
     if (searchRestaurant !== "") {
@@ -119,13 +119,14 @@ export function Restaurants({
       <TopNav isDarkMode={isDarkMode} setDarkMode={setDarkMode} />
       <RestaurantsWrapper>
         <RestaurantsContent>
-          
           <PanelContainer>
-            <div>Map</div>
+            
+            <Map
+              restaurants={filteredShops.restaurants ? filteredShops.restaurants : filteredShops}
+            />
             <FilterBar 
               cuisines={cuisineTags} 
               onCuisineFilter={handleFilterCuisine}
-
             />
             <RestaurantsImage src={ RatThinking } alt="Rat with chef's hat" />
           </PanelContainer>
