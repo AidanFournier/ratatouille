@@ -70,7 +70,7 @@ export function Restaurants({
         return shop;
       }
     });
-    setFilteredShops( filteredData);
+    setFilteredShops(filteredData);
   };
 
   console.log(filteredShops);
@@ -92,7 +92,7 @@ export function Restaurants({
         };
         setRestaurantDetails(newRestaurantDetails);
       } catch (err) {
-        // console.log('👹 ERROR:' + err)
+        console.log('👹 ERROR:' + err)
       };
     };
   };
@@ -103,6 +103,16 @@ export function Restaurants({
   }, [searchRestaurant]);
 
   console.log(filteredShops);
+
+  const pluralize = (length: number) => {
+    if (length === 0) {
+      return "places match your craving :("
+    } else if (length === 1) {
+      return "place matches your craving."
+    } else {
+      return "places match your craving."
+    }
+  };
 
   return (
     <>
@@ -122,7 +132,7 @@ export function Restaurants({
           
           <div>
             <RestaurantHeadline>Search results:</RestaurantHeadline>
-            <RestaurantSubline>{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} places match your craving.</RestaurantSubline>
+            <RestaurantSubline>{filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length} {pluralize(filteredShops.restaurants ? filteredShops.restaurants.length : filteredShops.length)}</RestaurantSubline>
             <ResultsContainer layout>
                 {filteredShops.restaurants ? 
                   filteredShops.restaurants.map((restaurant: {[key: string]: any}) => {
